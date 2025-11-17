@@ -60,6 +60,7 @@ input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;
 <a href="#threats">Threats</a>
 <a href="#charts">Charts</a>
 <a href="#research">Research</a>
+<a href="#references">References</a>
 </div>
 <button id="modeToggle">Light Mode</button>
 </nav>
@@ -70,8 +71,7 @@ input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;
 <div id="particles"></div>
 <div>
 <h1>Cybersecurity Intelligence Hub</h1>
-<p>Explore the depths of cyber defense, threat landscapes, modern attack methods, </p>
-<p> research-driven insights. Learn, analyze, and contribute.</p>
+<p>Explore cyber defense, threat landscapes, modern attack methods, research-driven insights.</p>
 <a href="#intro" class="btn">Start Exploring</a>
 </div>
 </section>
@@ -126,7 +126,6 @@ input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;
 <p><b>User Assignment:</b> Research real attacks, explain attacker, method, impact.</p>
 </div>
 </section>
-
 <!-- CHARTS & TOOLS -->
 <section id="charts">
 <h2>Cybersecurity Tools & Statistics</h2>
@@ -164,9 +163,9 @@ input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;
 </div>
 </section>
 
-<!-- REFERENCES & AUTHOR -->
+<!-- REFERENCES & AUTHORS -->
 <section id="references">
-<h2>References & Author</h2>
+<h2>References & Authors</h2>
 <div class="card">
 <p><b>References:</b></p>
 <ul>
@@ -176,15 +175,19 @@ input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;
 <li>MIT Tech Review: Cybersecurity Trends</li>
 <li>Gartner Security Tools Reports</li>
 </ul>
-<p><b>Author:</b> MUYANJA ANDREW</p>
-<p>Contact: +256708765729</p>
-<p>Address: Kyambogo University</p>
-<p>Course: BITC</p>
+<p><b>Authors:</b></p>
+<ul>
+<li>Okello Elvis Beckham — 25/U/BIE/01412/PE</li>
+<li>Okidi Emmanuel Opiro — 25/U/BIE/01413/PE</li>
+<li>Kasozi Joashin Sammy — 25/U/BIE/01379/PE</li>
+<li>Ssenyange Simon Peter — 25/U/BIE/11579/PE</li>
+<li>Basaija Patricia — 25/U/BIE/01362/PE</li>
+</ul>
 </div>
 </section>
 
 <footer style="text-align:center;padding:1rem;background:var(--bg);border-top:1px solid var(--glass-border);">
-&copy; 2025 CyberSecure Hub. All Rights Reserved.
+&copy; 2025 BleemistOrg. All Rights Reserved.
 </footer>
 
 <script>
@@ -195,12 +198,19 @@ document.body.classList.toggle('light-mode');
 modeBtn.textContent=document.body.classList.contains('light-mode')?'Dark Mode':'Light Mode';
 });
 
-// Fade-in
+// Fade-in animation for cards
 const faders=document.querySelectorAll('.card');
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('fade-in-visible');observer.unobserve(entry.target);}})}, {threshold:0.1});
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('fade-in-visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.1});
 faders.forEach(fader=>observer.observe(fader));
 
-// Particles
+// Particles in hero
 const particleContainer=document.getElementById('particles');
 particleContainer.innerHTML='';
 for(let i=0;i<70;i++){
@@ -215,24 +225,25 @@ particleContainer.appendChild(p);
 
 // Charts
 const barCtx=document.getElementById('barChart').getContext('2d');
-new Chart(barCtx,{type:'bar',data:{labels:['Malware','Phishing','Ransomware','DDoS','Insider','APT','IoT'],datasets:[{label:'Reported Cases (Thousands)',data:[150,120,100,80,60,40,30],backgroundColor:'rgba(0,255,255,0.6)',borderColor:'#00ffff',borderWidth:2}]} ,options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutQuad'}}});
+new Chart(barCtx,{type:'bar',data:{labels:['Malware','Phishing','Ransomware','DDoS','Insider','APT','IoT'],datasets:[{label:'Reported Cases (Thousands)',data:[150,120,100,80,60,40,30],backgroundColor:'rgba(0,255,255,0.6)',borderColor:'#00ffff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutQuad'}}});
 const pieCtx=document.getElementById('pieChart').getContext('2d');
 new Chart(pieCtx,{type:'pie',data:{labels:['Finance','Healthcare','Government','Tech','Education','Energy','Other'],datasets:[{data:[30,25,20,15,5,3,2],backgroundColor:['#00ffff','#ff00ff','#00ff00','#ffff00','#ff6600','#aa00ff','#00ffaa'],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutCubic'}}});
 
-// Firebase
-const firebaseConfig={
-apiKey:"YOUR_API_KEY",
-authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
-databaseURL:"https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-projectId:"YOUR_PROJECT_ID",
-storageBucket:"YOUR_PROJECT_ID.appspot.com",
-messagingSenderId:"YOUR_SENDER_ID",
-appId:"YOUR_APP_ID"
+// Firebase initialization
+const firebaseConfig = {
+apiKey: "AIzaSyDw-eeDlx8fWzXl6rTayqi-u9VfQc3-Xg0",
+authDomain: "cybersecurity-hub6872.firebaseapp.com",
+databaseURL: "https://cybersecurity-hub6872-default-rtdb.firebaseio.com",
+projectId: "cybersecurity-hub6872",
+storageBucket: "cybersecurity-hub6872.firebasestorage.app",
+messagingSenderId: "64471820858",
+appId: "1:64471820858:web:f5046e469382a035eae303",
+measurementId: "G-XJ7Y580BGE"
 };
 firebase.initializeApp(firebaseConfig);
 const db=firebase.database();
 
-// Feedback form
+// Feedback form submission
 const feedbackForm=document.getElementById('feedbackForm');
 const feedbackList=document.getElementById('feedbackList');
 feedbackForm.addEventListener('submit',e=>{
@@ -241,8 +252,12 @@ const name=document.getElementById('name').value;
 const email=document.getElementById('email').value;
 const feedback=document.getElementById('feedback').value;
 const research=document.getElementById('researchField').value;
-db.ref('submissions').push({name,email,feedback,research}).then(()=>{feedbackForm.reset();loadSubmissions();});
+db.ref('submissions').push({name,email,feedback,research}).then(()=>{
+feedbackForm.reset();
+loadSubmissions();
 });
+});
+
 function loadSubmissions(){
 db.ref('submissions').once('value',snapshot=>{
 feedbackList.innerHTML='';
@@ -256,8 +271,8 @@ div.style.borderRadius='0.5rem';
 div.innerHTML=`<strong>${data.name}</strong> (${data.email}): ${data.feedback}<br><em>Research:</em> ${data.research}`;
 feedbackList.appendChild(div);
 });
-});
 }
+);}
 loadSubmissions();
 </script>
 </body>
