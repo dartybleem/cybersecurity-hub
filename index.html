@@ -8,47 +8,52 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Chart.js & Firebase -->
+<!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <style>
 :root{
---bg:#001a3d;--bg-light:#f5f9ff;--text:#d8e2ff;--text-dark:#0a0a0a;
---accent:#00eaff;--accent2:#0077ff;--glass-bg:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.18);
+--bg:#0a0f1f;--text:#d8e2ff;--accent:#00eaff;--accent2:#0077ff;--glass-bg:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.18);
 }
 .light-mode{--bg:#f5f9ff;--text:#0a0a0a;--glass-bg:rgba(255,255,255,0.45);--glass-border:rgba(0,0,0,0.25);--accent:#0066ff;--accent2:#0044aa;}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;overflow-x:hidden;transition:.4s;}
-section{padding:80px 8%;position:relative;overflow:hidden;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;overflow-x:hidden;}
 h1,h2,h3{font-family:Orbitron,sans-serif;letter-spacing:1px;}
-h2{text-align:center;font-size:2.3rem;margin-bottom:20px;}
-p{line-height:1.7;}
-nav{position:fixed;top:0;left:0;width:100%;backdrop-filter:blur(8px);background:rgba(0,0,0,0.45);padding:15px 8%;z-index:50;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--glass-border);}
-nav a{color:var(--text);margin:0 14px;font-size:14px;text-decoration:none;transition:.2s;}
+h1{font-size:40px;margin-bottom:1rem;}
+h2{text-align:center;font-size:2rem;margin-bottom:1rem;}
+p{line-height:1.6;font-size:1rem;}
+section{padding:5% 5%;}
+nav{position:fixed;top:0;left:0;width:100%;backdrop-filter:blur(8px);background:rgba(0,0,0,0.45);padding:1rem 5%;z-index:50;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--glass-border);}
+nav a{color:var(--text);margin:0 0.8rem;font-size:0.9rem;text-decoration:none;transition:0.2s;}
 nav a:hover{color:var(--accent);text-shadow:0 0 8px var(--accent);}
-#modeToggle{padding:7px 14px;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:8px;cursor:pointer;transition:.3s;}
+#modeToggle{padding:0.5rem 1rem;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:0.5rem;cursor:pointer;transition:0.3s;}
 #modeToggle:hover{background:var(--accent);color:#000;}
-.hero{height:100vh;background:radial-gradient(circle at top,#001a3d,#000);display:flex;justify-content:center;align-items:center;text-align:center;color:var(--text);position:relative;overflow:hidden;}
-.hero h1{font-size:3rem;margin-bottom:10px;}
-.hero p{font-size:1.1rem;max-width:650px;margin:0 auto;}
-.cyber-grid{position:absolute;inset:0;background-image:linear-gradient(var(--accent) 1px, transparent 1px),linear-gradient(90deg,var(--accent) 1px, transparent 1px);background-size:60px 60px;opacity:.08;animation:moveGrid 12s linear infinite;}
+.hero{min-height:80vh;display:flex;justify-content:center;align-items:center;text-align:center;color:var(--text);position:relative;overflow:hidden;padding:2rem;}
+.hero h1,.hero p{color:var(--text) !important;}
+.light-mode .hero h1,.light-mode .hero p{color:#0a0a0a !important;}
+.cyber-grid{position:absolute;inset:0;background-image:linear-gradient(var(--accent) 1px,transparent 1px),linear-gradient(90deg,var(--accent) 1px,transparent 1px);background-size:60px 60px;opacity:0.05;animation:moveGrid 12s linear infinite;}
 @keyframes moveGrid{from{transform:translateY(0);}to{transform:translateY(60px);}}
-#particles div{position:absolute;border-radius:50%;background:var(--accent);opacity:.7;animation:float 10s linear infinite;}
-@keyframes float{0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-100px) translateX(50px);}100%{transform:translateY(0) translateX(0);}}
-.btn{display:inline-block;margin-top:25px;padding:12px 22px;border:1px solid var(--accent);color:var(--accent);border-radius:8px;transition:.3s;text-decoration:none;backdrop-filter:blur(6px);}
-.btn:hover{background:var(--accent);color:#000;box-shadow:0 0 15px var(--accent);}
-.card{background:var(--glass-bg);padding:22px;border-radius:14px;border:1px solid var(--glass-border);margin-bottom:25px;transition:.3s;position:relative;opacity:0;transform:translateY(40px);}
-.card:hover{transform:translateY(-4px);box-shadow:0 0 15px var(--accent);}
-.chart-wrapper{max-width:550px;margin:auto;padding:20px;}
-@media(max-width:768px){h1{font-size:2.3rem;}h2{font-size:1.7rem;}}
-.fade-in-visible{opacity:1;transform:translateY(0);transition:all 1s ease;}
+#particles div{position:absolute;width:0.4rem;height:0.4rem;border-radius:50%;background:var(--accent);opacity:0.3;animation:float 10s linear infinite;}
+@keyframes float{0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-6rem) translateX(3rem);}100%{transform:translateY(0) translateX(0);}}
+.hero p{max-width:90%;margin:0 auto;}
+.btn{display:inline-block;margin-top:1.5rem;padding:0.8rem 1.5rem;border:1px solid var(--accent);color:var(--accent);border-radius:0.5rem;transition:0.3s;text-decoration:none;backdrop-filter:blur(6px);}
+.btn:hover{background:var(--accent);color:#000;box-shadow:0 0 1rem var(--accent);}
+.card{background:var(--glass-bg);color:var(--text);padding:1.2rem;border-radius:1rem;border:1px solid var(--glass-border);margin-bottom:1.5rem;transition:0.3s;width:100%;max-width:800px;margin-left:auto;margin-right:auto;opacity:0;transform:translateY(1rem);}
+.card:hover{transform:translateY(-0.2rem);box-shadow:0 0 1rem var(--accent);}
+.chart-wrapper{width:100%;max-width:550px;margin:auto;padding:1rem;}
+@media(max-width:768px){h1{font-size:2rem;}h2{font-size:1.5rem;}}
+input,textarea{font-size:1rem;padding:0.6rem;margin:0.3rem;border-radius:0.5rem;width:100%;}
+.fade-in-visible{opacity:1;transform:translateY(0);transition:opacity 1s ease-out, transform 1s ease-out;}
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<div class="logo" style="font-family:Orbitron;font-size:20px;color:var(--accent);">CYBERSECURITY HUB</div>
+<div class="logo" style="font-family:Orbitron;font-size:1.2rem;color:var(--accent);">CYBERSECURITY HUB</div>
 <div>
 <a href="#intro">Intro</a>
 <a href="#how">How It Works</a>
@@ -59,12 +64,14 @@ nav a:hover{color:var(--accent);text-shadow:0 0 8px var(--accent);}
 <button id="modeToggle">Light Mode</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="hero">
 <div class="cyber-grid"></div>
 <div id="particles"></div>
 <div>
 <h1>Cybersecurity Intelligence Hub</h1>
-<p>Explore cyber defense, threat landscapes, modern attacks, and research-driven insights.</p>
+<p>Explore the depths of cyber defense, threat landscapes, modern attack methods, </p>
+<p> research-driven insights. Learn, analyze, and contribute.</p>
 <a href="#intro" class="btn">Start Exploring</a>
 </div>
 </section>
@@ -73,14 +80,14 @@ nav a:hover{color:var(--accent);text-shadow:0 0 8px var(--accent);}
 <section id="intro">
 <h2>What is Cybersecurity?</h2>
 <div class="card">
-<p>Cybersecurity protects systems, networks, and data from digital attacks. It includes network, cloud, app security, cryptography, penetration testing, digital forensics, AI monitoring, and cyber-physical protection.</p>
-<p>Essential for finance, healthcare, government, energy, transport, and education. Every digital interaction depends on secure systems.</p>
+<p>Cybersecurity protects systems, networks, devices, applications, and data from digital attacks. It spans network security, cloud security, app security, digital forensics, ethical hacking, AI threat analysis, blockchain integrity, intrusion detection, access control, and cyber-physical protection.</p>
+<p>Critical for healthcare, finance, transportation, governance, military, education, and communication. Protects privacy, national security, and business continuity.</p>
 <ul>
-<li><b>Confidentiality:</b> Data for authorized users only.</li>
-<li><b>Integrity:</b> Data accuracy and reliability.</li>
-<li><b>Availability:</b> Systems remain operational.</li>
-<li><b>Non-repudiation:</b> Actions cannot be denied.</li>
-<li><b>Accountability:</b> System actions are traceable.</li>
+<li><b>Confidentiality</b> — authorized access only.</li>
+<li><b>Integrity</b> — accurate, unaltered information.</li>
+<li><b>Availability</b> — systems operational when needed.</li>
+<li><b>Non-repudiation</b> — actions cannot be denied.</li>
+<li><b>Accountability</b> — all actions traceable.</li>
 </ul>
 </div>
 </section>
@@ -89,13 +96,14 @@ nav a:hover{color:var(--accent);text-shadow:0 0 8px var(--accent);}
 <section id="how">
 <h2>How Cybersecurity Works</h2>
 <div class="card">
+<p>Cybersecurity uses layers of hardware, software, processes, and human vigilance:</p>
 <ul>
-<li><b>Network Security:</b> Firewalls, IDS/IPS, VPNs, segmentation, protocols.</li>
-<li><b>Endpoint Security:</b> Antivirus, EDR, patching.</li>
-<li><b>Application Security:</b> Code audits, encryption, penetration testing.</li>
-<li><b>Data Security:</b> Backups, cloud monitoring, secure storage.</li>
-<li><b>IAM:</b> MFA, SSO, role-based access.</li>
-<li><b>Monitoring & Response:</b> SIEM, SOC, anomaly detection, recovery.</li>
+<li><b>Network Security:</b> Firewalls, IDS/IPS, VPNs, segmentation.</li>
+<li><b>Endpoint Security:</b> Antivirus, EDR, device management, patches.</li>
+<li><b>Application Security:</b> Code audits, penetration testing, encryption, secure APIs.</li>
+<li><b>Data Security:</b> Backups, encryption, cloud monitoring, tokenization.</li>
+<li><b>Identity & Access Management:</b> Authentication, SSO, MFA, role-based access.</li>
+<li><b>Monitoring & Response:</b> SIEM, SOC teams, AI anomaly detection, recovery plans.</li>
 <li><b>Training:</b> Awareness, phishing simulations, policy enforcement.</li>
 </ul>
 </div>
@@ -105,118 +113,113 @@ nav a:hover{color:var(--accent);text-shadow:0 0 8px var(--accent);}
 <section id="threats">
 <h2>Cyber Threats Explained</h2>
 <div class="card">
+<p>Categories of cyber threats. Users research real-life examples:</p>
 <ul>
-<li><b>Malware:</b> Viruses, worms, trojans, ransomware causing data theft or disruption.</li>
-<li><b>Phishing:</b> Social engineering via email/SMS/fake sites.</li>
+<li><b>Malware:</b> Viruses, worms, trojans, ransomware.</li>
+<li><b>Phishing:</b> Emails, SMS, fake websites.</li>
 <li><b>Ransomware:</b> Encrypts files, demands payment.</li>
-<li><b>DDoS:</b> Overloads servers, disrupts services.</li>
+<li><b>DDoS:</b> Floods servers to disrupt service.</li>
 <li><b>Insider Threats:</b> Malicious or careless insiders.</li>
-<li><b>APT:</b> Targeted, long-term attacks for espionage/IP theft.</li>
-<li><b>IoT & Zero-Day:</b> Exploits unpatched devices/software.</li>
+<li><b>APT:</b> Long-term targeted attacks for espionage.</li>
+<li><b>IoT/Zero-Day:</b> Exploits unknown device/software flaws.</li>
 </ul>
-<p><b>User Assignment:</b> Research real-life attacks, describe attacker, method, and impact, then submit.</p>
+<p><b>User Assignment:</b> Research real attacks, explain attacker, method, impact.</p>
 </div>
 </section>
 
-<!-- CHARTS -->
+<!-- CHARTS & TOOLS -->
 <section id="charts">
 <h2>Cybersecurity Tools & Statistics</h2>
 <div class="card">
 <ul>
-<li><b>Firewalls:</b> Cisco ASA, pfSense, Palo Alto</li>
-<li><b>Endpoint:</b> Norton, Kaspersky, Windows Defender</li>
-<li><b>SIEM:</b> Splunk, ArcSight, IBM QRadar</li>
-<li><b>Penetration Testing:</b> Metasploit, Nmap, Burp Suite</li>
-<li><b>Encryption:</b> AES, RSA, TLS/SSL</li>
-<li><b>Cloud Security:</b> AWS Shield, Azure Defender, Google Cloud Security</li>
+<li><b>Firewalls:</b> Cisco ASA, pfSense, Palo Alto.</li>
+<li><b>Endpoint Protection:</b> Norton, Windows Defender, Kaspersky.</li>
+<li><b>SIEM:</b> Splunk, ArcSight, IBM QRadar.</li>
+<li><b>Pen Testing:</b> Metasploit, Nmap, Burp Suite.</li>
+<li><b>Encryption:</b> AES, RSA, TLS/SSL.</li>
+<li><b>Cloud Security:</b> AWS Shield, Azure Defender.</li>
 </ul>
 </div>
-<div class="chart-wrapper"><canvas id="barChart"></canvas></div>
-<div class="chart-wrapper"><canvas id="pieChart"></canvas></div>
+<div class="chart-wrapper">
+<canvas id="barChart"></canvas>
+</div>
+<div class="chart-wrapper">
+<canvas id="pieChart"></canvas>
+</div>
+</section>
 
 <!-- RESEARCH & FEEDBACK -->
 <section id="research">
 <h2>Research Assignment & Feedback</h2>
 <div class="card">
-<p>Research real-life cyberattacks based on the categories above and submit:</p>
-<ul>
-<li>Attack type (Malware, Phishing, etc.)</li>
-<li>Attacker / group</li>
-<li>Impact on target</li>
-</ul>
+<p>Submit your research & feedback:</p>
 <form id="feedbackForm">
-<input type="text" id="name" placeholder="Your Name" required style="width:100%;padding:10px;margin:5px;border-radius:8px;">
-<input type="email" id="email" placeholder="Your Email" required style="width:100%;padding:10px;margin:5px;border-radius:8px;">
-<textarea id="feedback" placeholder="Your Feedback" required style="width:100%;padding:10px;margin:5px;border-radius:8px;"></textarea>
-<textarea id="researchField" placeholder="Your Research Assignment Submission" required style="width:100%;padding:10px;margin:5px;border-radius:8px;"></textarea>
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="feedback" placeholder="Your Feedback" required></textarea>
+<textarea id="researchField" placeholder="Your Research Assignment Submission" required></textarea>
 <button type="submit" class="btn">Submit</button>
 </form>
 <div id="feedbackList" style="margin-top:20px;"></div>
 </div>
 </section>
 
-<!-- FOOTER & AUTHOR -->
+<!-- REFERENCES & AUTHOR -->
 <section id="references">
 <h2>References & Author</h2>
 <div class="card">
 <p><b>References:</b></p>
 <ul>
-<li>Cybersecurity & Infrastructure Security Agency (CISA)</li>
-<li>National Institute of Standards and Technology (NIST)</li>
-<li>ISO 27001 Standards Documentation</li>
-<li>MIT Technology Review: Cybersecurity Trends</li>
+<li>CISA</li>
+<li>NIST</li>
+<li>ISO 27001</li>
+<li>MIT Tech Review: Cybersecurity Trends</li>
 <li>Gartner Security Tools Reports</li>
 </ul>
-<p><b>Author Details:</b></p>
-<p>Name: MUYANJA ANDREW</p>
+<p><b>Author:</b> MUYANJA ANDREW</p>
 <p>Contact: +256708765729</p>
 <p>Address: Kyambogo University</p>
 <p>Course: BITC</p>
 </div>
 </section>
 
-<footer style="text-align:center;padding:20px;background:var(--bg);border-top:1px solid var(--glass-border);">
+<footer style="text-align:center;padding:1rem;background:var(--bg);border-top:1px solid var(--glass-border);">
 &copy; 2025 CyberSecure Hub. All Rights Reserved.
 </footer>
 
 <script>
-// DARK/LIGHT MODE TOGGLE
+// Dark/Light mode
 const modeBtn=document.getElementById('modeToggle');
 modeBtn.addEventListener('click',()=>{
 document.body.classList.toggle('light-mode');
 modeBtn.textContent=document.body.classList.contains('light-mode')?'Dark Mode':'Light Mode';
 });
 
-// CARD FADE-IN ON SCROLL
+// Fade-in
 const faders=document.querySelectorAll('.card');
-const appearOptions={threshold:0.1};
-const appearOnScroll=new IntersectionObserver((entries,observer)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add('fade-in-visible');observer.unobserve(entry.target);}
-});
-},appearOptions);
-faders.forEach(fader=>appearOnScroll.observe(fader));
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('fade-in-visible');observer.unobserve(entry.target);}})}, {threshold:0.1});
+faders.forEach(fader=>observer.observe(fader));
 
-// PARTICLE ANIMATION
+// Particles
 const particleContainer=document.getElementById('particles');
 particleContainer.innerHTML='';
 for(let i=0;i<70;i++){
 const p=document.createElement('div');
 p.style.left=Math.random()*100+'%';
 p.style.top=Math.random()*100+'%';
-p.style.width=5+Math.random()*5+'px';
-p.style.height=5+Math.random()*5+'px';
+p.style.width=0.4+Math.random()*0.4+'rem';
+p.style.height=0.4+Math.random()*0.4+'rem';
 p.style.animationDuration=5+Math.random()*10+'s';
 particleContainer.appendChild(p);
 }
 
-// CHART.JS
+// Charts
 const barCtx=document.getElementById('barChart').getContext('2d');
-new Chart(barCtx,{type:'bar',data:{labels:['Malware','Phishing','Ransomware','DDoS','Insider','APT','IoT'],datasets:[{label:'Reported Cases (Thousands)',data:[150,120,100,80,60,40,30],backgroundColor:'rgba(0,255,255,0.6)',borderColor:'#00ffff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:true,animation:{duration:2000,easing:'easeOutQuad'}}});
+new Chart(barCtx,{type:'bar',data:{labels:['Malware','Phishing','Ransomware','DDoS','Insider','APT','IoT'],datasets:[{label:'Reported Cases (Thousands)',data:[150,120,100,80,60,40,30],backgroundColor:'rgba(0,255,255,0.6)',borderColor:'#00ffff',borderWidth:2}]} ,options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutQuad'}}});
 const pieCtx=document.getElementById('pieChart').getContext('2d');
-new Chart(pieCtx,{type:'pie',data:{labels:['Finance','Healthcare','Government','Tech','Education','Energy','Other'],datasets:[{data:[30,25,20,15,5,3,2],backgroundColor:['#00ffff','#ff00ff','#00ff00','#ffff00','#ff6600','#aa00ff','#00ffaa'],borderWidth:1}]} ,options:{responsive:true,maintainAspectRatio:true,animation:{duration:2000,easing:'easeOutCubic'}}});
+new Chart(pieCtx,{type:'pie',data:{labels:['Finance','Healthcare','Government','Tech','Education','Energy','Other'],datasets:[{data:[30,25,20,15,5,3,2],backgroundColor:['#00ffff','#ff00ff','#00ff00','#ffff00','#ff6600','#aa00ff','#00ffaa'],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:2000,easing:'easeOutCubic'}}});
 
-// FIREBASE CONFIGURATION
+// Firebase
 const firebaseConfig={
 apiKey:"YOUR_API_KEY",
 authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
@@ -229,7 +232,7 @@ appId:"YOUR_APP_ID"
 firebase.initializeApp(firebaseConfig);
 const db=firebase.database();
 
-// FORM SUBMISSION
+// Feedback form
 const feedbackForm=document.getElementById('feedbackForm');
 const feedbackList=document.getElementById('feedbackList');
 feedbackForm.addEventListener('submit',e=>{
@@ -247,9 +250,9 @@ snapshot.forEach(child=>{
 const data=child.val();
 const div=document.createElement('div');
 div.style.background='rgba(0,255,255,0.05)';
-div.style.padding='10px';
-div.style.marginBottom='10px';
-div.style.borderRadius='8px';
+div.style.padding='0.6rem';
+div.style.marginBottom='0.6rem';
+div.style.borderRadius='0.5rem';
 div.innerHTML=`<strong>${data.name}</strong> (${data.email}): ${data.feedback}<br><em>Research:</em> ${data.research}`;
 feedbackList.appendChild(div);
 });
@@ -259,4 +262,3 @@ loadSubmissions();
 </script>
 </body>
 </html>
-
